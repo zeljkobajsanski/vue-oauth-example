@@ -1,13 +1,15 @@
 <template>
-    <form class="form-signin" @submit.prevent="login">
+    <form class="form-signin" @submit.prevent="loginUser">
         <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
         <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus v-model="email">
+        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus
+               v-model="email">
         <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required v-model="password">
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required
+               v-model="password">
 
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-        <button class="btn btn-primary" @click="facebook">Facebook</button>
+        <button class="btn btn-primary" @click="authenticateFb">Facebook</button>
         <div class="mt-3">
             <p class="float-left">Don't have account?</p>
             <div class="float-right">
@@ -20,21 +22,28 @@
 </template>
 
 <script lang="ts">
-    import { Vue, Component } from 'vue-property-decorator'
+    import {Vue, Component} from 'vue-property-decorator'
+    import {Action} from "vuex-class";
 
     @Component
     export default class Login extends Vue {
         email = '';
         password = '';
 
-        async login() {
-            const { data } = await this.$auth.login({email: this.email, password: this.password});
-            console.log(data);
+        @Action login;
+        @Action authenticate;
+
+        async loginUser() {
+            await this.login({user: {email: this.email, password: this.password}});
+            this.$router.replace('/');
         }
 
-        async facebook() {
-            await this.$auth.authenticate('facebook');
+        async authenticateFb() {
+            await this.authenticate('facebook');
+            this.$router.replace('/');
         }
+
+
     }
 </script>
 

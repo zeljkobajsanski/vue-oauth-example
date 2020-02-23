@@ -1,10 +1,12 @@
 <template>
-    <form class="form-signin" @submit.prevent="register">
+    <form class="form-signin" @submit.prevent="registerUser">
         <h1 class="h3 mb-3 font-weight-normal">Create user account</h1>
         <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus v-model="user.email">
+        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus
+               v-model="user.email">
         <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required v-model="user.password">
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required
+               v-model="user.password">
         <label for="inputName" class="sr-only">Name</label>
         <input type="text" id="inputName" class="form-control" placeholder="Full name" required v-model="user.name">
 
@@ -22,18 +24,16 @@
 
 <script lang="ts">
     import {Vue, Component} from 'vue-property-decorator';
+    import {Action} from "vuex-class";
 
     @Component
     export default class Register extends Vue {
         user = {email: '', password: '', name: ''};
+        @Action register;
 
-        async register() {
-            try {
-                const { data, message } = await this.$auth.register(this.user);
-                console.log(message);
-            } catch (e) {
-                alert(e);
-            }
+        async registerUser() {
+            await this.register(this.user);
+            this.$router.replace('/');
         }
     }
 </script>
