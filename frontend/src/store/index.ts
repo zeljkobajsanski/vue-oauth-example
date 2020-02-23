@@ -12,6 +12,10 @@ const vueAuth = new VueAuthenticate(axios, {
         facebook: {
             clientId: '2081803578771989',
             url: '/api/authentication/authenticate/facebook',
+        },
+        google: {
+            clientId: '113058907449-m1jbtu0s15aitnr1mqdi3oha4513oufv.apps.googleusercontent.com',
+            url: '/api/authentication/authenticate/google',
         }
     }
 });

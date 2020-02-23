@@ -27,6 +27,8 @@
     "axios": "^0.19.2",
     "bcrypt": "^4.0.0",
     "jsonwebtoken": "^8.5.1",
+    "jwt-decode": "^2.2.0",
+    "qs": "^6.9.1",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.0",
     "rxjs": "^6.5.3",

@@ -10,7 +10,8 @@
 
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
         <p class="text-center mb-0 text-muted mt-2" style="font-size: 12px">or login with</p>
-        <button class="btn btn-facebook" @click="authenticateFb">Facebook</button>
+        <button class="btn btn-facebook mr-2" @click="authenticateFb">Facebook</button>
+        <button class="btn btn-danger" @click="authenticateGoogle">Google</button>
         <div class="mt-3">
             <p class="float-left">Don't have account?</p>
             <div class="float-right">
@@ -44,6 +45,10 @@
             this.$router.replace('/');
         }
 
+        async authenticateGoogle() {
+            await this.authenticate('google');
+            this.$router.replace('/');
+        }
 
     }
 </script>
