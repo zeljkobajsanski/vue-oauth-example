@@ -13,7 +13,7 @@
             <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
           </li>
         </ul>
-        <p class="text-light mt-3 mr-3">{{user.name}}</p>
+        <p class="text-light mt-3 mr-3">{{user}}</p>
         <button class="btn btn-danger btn-sm" @click="signOut">Logout</button>
       </div>
     </nav>
@@ -32,11 +32,11 @@
 <script lang="ts">
   // @ is an alias to /src
   import {Vue, Component} from 'vue-property-decorator'
-  import {Action, Getter} from "vuex-class";
+  import {Action, Getter, State} from "vuex-class";
 
   @Component
   export default class Home extends Vue {
-    @Getter user!: any;
+    @State user!: any;
     @Action logout;
 
     async signOut() {

@@ -18,19 +18,20 @@ const vueAuth = new VueAuthenticate(axios, {
 
 export default new Vuex.Store({
     state: {
-        isAuthenticated: false
+        isAuthenticated: false,
+        user: ''
     },
     getters: {
         isAuthenticated() {
             return vueAuth.isAuthenticated()
-        },
-        user() {
-            return vueAuth.getPayload();
         }
     },
     mutations: {
         isAuthenticated(state, payload) {
             state.isAuthenticated = payload.isAuthenticated
+        },
+        setUser(state, user) {
+            state.user = user;
         }
     },
     actions: {
@@ -38,13 +39,15 @@ export default new Vuex.Store({
             await vueAuth.login(payload.user, payload.requestOptions);
             context.commit('isAuthenticated', {
                 isAuthenticated: vueAuth.isAuthenticated()
-            })
+            });
+            context.commit('setUser', vueAuth.getPayload().name);
         },
         async authenticate(context, provider) {
             await vueAuth.authenticate(provider);
             context.commit('isAuthenticated', {
                 isAuthenticated: vueAuth.isAuthenticated()
             });
+            context.commit('setUser', vueAuth.getPayload().name);
         },
         async register(context, user) {
             await vueAuth.register(user);
@@ -57,6 +60,7 @@ export default new Vuex.Store({
             context.commit('isAuthenticated', {
                 isAuthenticated: vueAuth.isAuthenticated()
             });
+            context.commit('setUser', 'Guest');
         }
     }
 })
