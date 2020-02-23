@@ -78,7 +78,15 @@
         border-bottom-right-radius: 0;
         border-bottom-left-radius: 0;
     }
+
     .form-signin input[type="password"] {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    .form-signin input#inputName {
         margin-bottom: 10px;
         border-top-left-radius: 0;
         border-top-right-radius: 0;

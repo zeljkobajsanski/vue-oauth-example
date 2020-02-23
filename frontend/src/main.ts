@@ -4,10 +4,11 @@ import store from './store'
 import router from './router'
 import axios from 'axios';
 import VueAxios from "vue-axios";
-import VueAuthenticate from 'vue-authenticate';
+import VueMeta from 'vue-meta'
 
 Vue.config.productionTip = false;
 Vue.use(VueAxios, axios);
+Vue.use(VueMeta);
 
 new Vue({
   router,

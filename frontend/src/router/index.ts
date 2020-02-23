@@ -3,6 +3,8 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Login from '@/views/Login.vue'
 import RegisterPage from '@/views/Register.vue'
+import UsersPage from '@/views/Users.vue';
+import AboutPage from '@/views/About.vue';
 import store from '../store'
 
 Vue.use(VueRouter);
@@ -18,14 +20,18 @@ const routes = [
       } else {
         next('/login');
       }
-    }
+    },
+    children: [
+      {path: '/', name: 'users', component: UsersPage},
+      {path: '/about', name: 'about', component: AboutPage},
+    ]
   },
   {
     path: '/login',
     name: 'Login',
     component: Login
   },
-  {path: '/register', name: 'Register', component: RegisterPage}
+  {path: '/register', name: 'Register', component: RegisterPage},
 ];
 
 const router = new VueRouter({

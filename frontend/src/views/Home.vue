@@ -10,7 +10,10 @@
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            <router-link to="/" class="nav-link">Users</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="/about" class="nav-link">About</router-link>
           </li>
         </ul>
         <p class="text-light mt-3 mr-3">{{user}}</p>
@@ -20,9 +23,7 @@
     <main role="main" class="container">
 
       <div class="starter-template">
-        <h1>Bootstrap starter template</h1>
-        <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a
-          mostly barebones HTML document.</p>
+        <router-view/>
       </div>
 
     </main>

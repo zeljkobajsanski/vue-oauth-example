@@ -1,6 +1,6 @@
 <template>
     <form class="form-signin" @submit.prevent="loginUser">
-        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+        <h1 class="h3 mb-3 font-weight-normal text-center">Please sign in</h1>
         <label for="inputEmail" class="sr-only">Email address</label>
         <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus
                v-model="email">
@@ -9,7 +9,8 @@
                v-model="password">
 
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-        <button class="btn btn-primary" @click="authenticateFb">Facebook</button>
+        <p class="text-center mb-0 text-muted mt-2" style="font-size: 12px">or login with</p>
+        <button class="btn btn-facebook" @click="authenticateFb">Facebook</button>
         <div class="mt-3">
             <p class="float-left">Don't have account?</p>
             <div class="float-right">
@@ -82,14 +83,21 @@
     .form-signin .form-control:focus {
         z-index: 2;
     }
+
     .form-signin input[type="email"] {
         margin-bottom: -1px;
         border-bottom-right-radius: 0;
         border-bottom-left-radius: 0;
     }
+
     .form-signin input[type="password"] {
         margin-bottom: 10px;
         border-top-left-radius: 0;
         border-top-right-radius: 0;
+    }
+
+    .btn-facebook {
+        background-color: #4267b2;
+        color: #ffff;
     }
 </style>
