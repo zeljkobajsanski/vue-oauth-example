@@ -69,7 +69,7 @@ export class AuthenticationController {
         const query = qs.stringify({
             code: body.code,
             client_id: body.clientId,
-            client_secret: 'UkAoORDRalYMlL9Vkl_nkYrf',
+            client_secret: process.env.GOOGLE_SECRET,
             grant_type: 'authorization_code',
             redirect_uri: body.redirectUri,
         });
